@@ -1,0 +1,18 @@
+runtime: python39  # Using Python 3.9 which is compatible with your dependencies
+
+entrypoint: gunicorn --bind :$PORT app:app  # Using your app.py as the main file
+
+instance_class: F1  # Basic instance class, you can adjust based on needs
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 10
+
+env_variables:
+  FLASK_APP: "app"
+  FLASK_ENV: "production"
+  SQLALCHEMY_DATABASE_URI: "sqlite:///mydatabase.db"  # Note: For production, you might want to use Cloud SQL instead
+
+includes:
+- requirements.txt
