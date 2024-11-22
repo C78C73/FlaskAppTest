@@ -1,3 +1,4 @@
+---
 runtime: python39
 
 entrypoint: gunicorn --bind :$PORT app:app
@@ -12,7 +13,4 @@ automatic_scaling:
 env_variables:
   FLASK_APP: "app"
   FLASK_ENV: "production"
-  SQLALCHEMY_DATABASE_URI: "sqlite:////tmp/mydatabase.db"  # Updated path
-
-includes:
-- requirements.txt
+  SQLALCHEMY_DATABASE_URI: "sqlite:////tmp/mydatabase.db"
